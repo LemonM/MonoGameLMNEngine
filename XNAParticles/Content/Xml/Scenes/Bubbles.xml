@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Scene>
+  <Emitters>
+    <ParticleEmitter>
+      <Path>Texture/Particles/Particle2</Path>
+      <Size>
+        <X>80</X>
+        <Y>20</Y>
+      </Size>
+      <Position>
+        <X>700</X>
+        <Y>600</Y>
+      </Position>
+      <MaxParticlesCount>1000</MaxParticlesCount>
+      <RandomColor>true</RandomColor>
+      <PerEmit>2</PerEmit>
+      <ParticlesColor>
+        <A>255</A>
+        <B>255</B>
+        <G>255</G>
+        <R>255</R>
+      </ParticlesColor>
+      <Enabled>true</Enabled>
+      <ParticlesVelocity>
+        <X>0</X>
+        <Y>-500</Y>
+      </ParticlesVelocity>
+      <ParticleAngularVelocity>0</ParticleAngularVelocity>
+      <ParticleLifeTime>2000</ParticleLifeTime>      
+    </ParticleEmitter>
+
+    <ParticleEmitter>
+      <Path>Texture/Particles/BgLemonText</Path>
+      <Size>
+        <X>1600</X>
+        <Y>900</Y>
+      </Size>
+      <Position>
+        <X>0</X>
+        <Y>0</Y>
+      </Position>
+      <MaxParticlesCount>10</MaxParticlesCount>
+      <RandomColor>true</RandomColor>
+      <PerEmit>1</PerEmit>
+      <ParticlesColor>
+        <A>255</A>
+        <B>255</B>
+        <G>255</G>
+        <R>255</R>
+      </ParticlesColor>
+      <Enabled>true</Enabled>
+      <ParticlesVelocity>
+        <X>-3</X>
+        <Y>5</Y>
+      </ParticlesVelocity>
+      <ParticleAngularVelocity>0</ParticleAngularVelocity>
+      <ParticleLifeTime>5000</ParticleLifeTime>
+    </ParticleEmitter>
+  </Emitters>
+  <BackgroundPath>Texture/Menu/BG</BackgroundPath>
+</Scene>
+

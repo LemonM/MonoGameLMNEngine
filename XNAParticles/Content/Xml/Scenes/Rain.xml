@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Scene>
+  <Emitters>
+    <ParticleEmitter>
+      <Path>Texture/Particles/RainDropB</Path>
+      <Size>
+        <X>1600</X>
+        <Y>1</Y>
+      </Size>
+      <Position>
+        <X>0</X>
+        <Y>0</Y>
+      </Position>
+      <MaxParticlesCount>2000</MaxParticlesCount>
+      <RandomColor>false</RandomColor>
+      <PerEmit>5</PerEmit>
+      <ParticlesColor>
+        <A>200</A>
+        <B>255</B>
+        <G>255</G>
+        <R>255</R>
+      </ParticlesColor>
+      <Enabled>true</Enabled>
+      <ParticlesVelocity>
+        <X>-400</X>
+        <Y>5000</Y>
+      </ParticlesVelocity>
+      <ParticleAngularVelocity>0</ParticleAngularVelocity>
+      <ParticleLifeTime>2000</ParticleLifeTime>      
+    </ParticleEmitter>
+  </Emitters>
+  <Sound>
+    <path1>Sounds/M/RainBGSoundLoop1</path1>
+    <path2>Sounds/M/RainBGSoundLoop</path2>
+    <Volume>0.2</Volume>
+  </Sound>
+  <BackgroundPath>Texture/RainyBG3</BackgroundPath>
+</Scene>
+
