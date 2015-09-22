@@ -80,6 +80,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="InputController\Input.cs" />
     <Compile Include="LoadSceneForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +141,9 @@
     </Content>
     <Content Include="Content\Texture\BgLemon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Texture\GUI\Cursor3.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\Texture\Particles\BgLemonText.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

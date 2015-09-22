@@ -47,6 +47,8 @@ namespace LemonParticlesSystem.ParticlesSystem
         public int MaxParticlesCount;
         [XmlElement("RandomColor")]
         public bool IsRandomColor;
+        [XmlElement("RandomDirection")]
+        public bool IsRandomDirection;
 
         public float ParticleAngularVelocity { get; set; }
 
@@ -118,6 +120,7 @@ namespace LemonParticlesSystem.ParticlesSystem
         public ParticleEmitter()
         {
             random = new Random();
+            IsRandomDirection = false;
         }
 
 
@@ -132,15 +135,6 @@ namespace LemonParticlesSystem.ParticlesSystem
                         Emit();                                     //Particle creation function
                     Timer = 0f;
                 }
-
-                /*  Parallel update
-                Parallel.For(0, ParticlesM.Length, i =>
-                    {
-                        if (ParticlesM[i] != null)
-                            ParticlesM[i].Update(gameTime, GDM);
-                        i++;
-                    });
-                */
                 
                 for (int i = 0; i < MaxParticlesCount; i++)
                 {
@@ -206,24 +200,7 @@ namespace LemonParticlesSystem.ParticlesSystem
                     i++;
                 });
              
-              /*  
-            for (int i = 0; i < ParticlesM.Length; i++)
-            {
-                if (ParticlesM[i] != null)
-                ParticlesM[i].Destroy(this, EventArgs.Empty);
-            }
-                */ 
             ParticlesTexture.Dispose();
         }
-        /*
-        public void SaveParticleEmitterToFile(string FileName)
-        {
-        }
-
-        public static ParticleEmitter LoadParticleEmitterFromFile(string FileName)
-        {
-            return ParticleEmitterXmlManager.Load(FileName);
-        }
-         */ 
     }
 }

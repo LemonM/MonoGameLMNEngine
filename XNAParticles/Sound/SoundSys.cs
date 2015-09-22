@@ -31,7 +31,7 @@ namespace LemonParticlesSystem.Sound
             byte[] buffer = new byte[20];
             sound = new SoundEffect(buffer, 44100, AudioChannels.Stereo);
             sound.Name = "1";
-            if (path1 != null)
+            if (path1 != null && path1 != string.Empty)
             {
                 sound = content.Load<SoundEffect>(path1);
                 // sound2 = content.Load<SoundEffect>(path2);
@@ -49,6 +49,12 @@ namespace LemonParticlesSystem.Sound
                 if (Sound1.State != SoundState.Playing)
                     Sound1.Play();
             
+        }
+
+        public void Stop()
+        {
+            if (path1 != null)
+                Sound1.Stop();
         }
     }
 }

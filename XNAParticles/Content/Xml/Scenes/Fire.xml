@@ -13,6 +13,7 @@
       </Position>
       <MaxParticlesCount>1000</MaxParticlesCount>
       <RandomColor>false</RandomColor>
+      <RandomDirection>true</RandomDirection>
       <PerEmit>5</PerEmit>
       <ParticlesColor>
         <A>255</A>

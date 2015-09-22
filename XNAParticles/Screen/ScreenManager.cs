@@ -74,7 +74,13 @@ namespace LemonParticlesSystem.Screen
             NewScreen = scrChangeEvtArgs.newScreen;
             ScreenStack.Push(NewScreen);
             if (scrChangeEvtArgs.currentScreen != null)
+            {
+                if (scrChangeEvtArgs.currentScreen is MainScreen)
+                {
+                    (scrChangeEvtArgs.currentScreen as MainScreen).SceneMngr.GetCurrentScene().sound.Stop();
+                        }
                 scrChangeEvtArgs.currentScreen.UnloadContent();
+            }
             CurrentScreen = NewScreen;
             CurrentScreen.LoadContent(Content); 
         }

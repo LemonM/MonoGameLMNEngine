@@ -168,6 +168,11 @@ namespace LemonParticlesSystem.ParticlesSystem
             PositionX = position.X;
             PositionY = position.Y;
             Velocity = parentEmitter.ParticlesVelocity;
+
+            if (parentEmitter.IsRandomDirection)
+                if (random.Next(0, 10) < 5)
+                    Velocity = parentEmitter.ParticlesVelocity * -1;
+
             LifeTime = parentEmitter.ParticleLifeTime + random.Next(500);
             Width = textre.Width;
             Height = textre.Height;
@@ -221,8 +226,19 @@ namespace LemonParticlesSystem.ParticlesSystem
                 if (OnDeath != null)
                     OnDeath(this, EvtArgs);
             }
-            PositionX += Velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds * Scale;
-            PositionY += Velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds * Scale;
+
+            if (!parentEmitter.IsRandomDirection)
+            {
+                PositionX += Velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds * Scale;
+                PositionY += Velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds * Scale;
+            }
+            else
+            {
+                {
+                    PositionX += Velocity.X * (float)gameTime.ElapsedGameTime.TotalSeconds * Scale;
+                    PositionY += Velocity.Y * (float)gameTime.ElapsedGameTime.TotalSeconds * Scale;
+                }
+            }
             Rotation += AngularVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
 

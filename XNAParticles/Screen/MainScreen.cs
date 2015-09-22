@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using LemonParticlesSystem.InputController;
 
 using LemonParticlesSystem.ParticlesSystem;
 
@@ -17,9 +18,13 @@ namespace LemonParticlesSystem.Screen
     {
         SceneManager sceneManager;
         SpriteFont font;
-        KeyboardState kbState;
 
         string Path;
+
+        public SceneManager SceneMngr
+        {
+            get { return sceneManager; }
+        }
 
         public MainScreen(string path)
         {
@@ -45,9 +50,8 @@ namespace LemonParticlesSystem.Screen
 
         public override void Update(GameTime gameTime)
         {
-            kbState = Keyboard.GetState();
 
-            if (kbState.IsKeyDown(Keys.Escape))
+            if (Input.Instance.IsKeyPressed(Keys.Escape))
             {
                 Screen.ScreenManager.instance.AddScreen(new MenuScreen());   
             }

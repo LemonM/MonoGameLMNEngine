@@ -62,5 +62,10 @@ namespace LemonParticlesSystem
             CurrentScene.Draw(spriteBatch);
             spriteBatch.End();
         }
+
+        public Scene GetCurrentScene()
+        {
+            return CurrentScene;
+        }
     }
 }

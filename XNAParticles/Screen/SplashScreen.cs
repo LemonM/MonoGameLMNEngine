@@ -13,7 +13,6 @@ namespace LemonParticlesSystem.Screen
 {
     public class SplashScreen : GameScreen
     {
-        KeyboardState keyboardState;
         Texture2D background;
         [XmlElement("Path")]
         public string backgroundPath;
@@ -35,10 +34,7 @@ namespace LemonParticlesSystem.Screen
 
         public override void Update(GameTime gameTime)
         {
-            keyboardState = Keyboard.GetState();
-
-
-            if (keyboardState.IsKeyDown(Keys.Enter))
+            if (InputController.Input.Instance.IsKeyPressed(Keys.Enter))
             {
                 ScreenManager.instance.AddScreen(new MenuScreen());
             }
