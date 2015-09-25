@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace LemonParticlesSystem.GUI
 {
-    public class Button
+    public class Button : GUIObject
     {
         public Color color;
         Rectangle rect;

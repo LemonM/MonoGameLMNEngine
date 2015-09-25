@@ -80,6 +80,7 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GUI\GUIObject.cs" />
     <Compile Include="InputController\Input.cs" />
     <Compile Include="LoadSceneForm.cs">
       <SubType>Form</SubType>

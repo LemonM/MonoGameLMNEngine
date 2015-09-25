@@ -13,11 +13,13 @@ using Microsoft.Xna.Framework.Input;
 namespace LemonParticlesSystem.GUI
 {
     public class GUI
-    {
+    {        
         List<Text> Labels;
         public List<Button> Buttons { get; set; }
 
         public Cursor cursor;
+
+        public List<GUIObject> GuiObjects { get; set; }
 
         public SpriteFont Font { get; set; }
 

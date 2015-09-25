@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace LemonParticlesSystem.GUI
 {
-    public class Text
+    public class Text : GUIObject
     {
         Vector2 size;
 

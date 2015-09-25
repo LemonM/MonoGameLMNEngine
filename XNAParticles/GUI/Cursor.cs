@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework.Content;
 namespace LemonParticlesSystem.GUI
 {
     [Serializable]
-    public class Cursor
+    public class Cursor : GUIObject
     {
         Rectangle rect;
         [XmlIgnore]

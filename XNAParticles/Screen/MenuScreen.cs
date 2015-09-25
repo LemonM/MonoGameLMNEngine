@@ -33,18 +33,20 @@ namespace LemonParticlesSystem.Screen
             gui = new GUI.GUI(@"Fonts\Menu");
             gui.LoadContent(Content);
             gui.CreateButton(new Vector2(ScreenManager.instance.ScreenSize.X / 2 - gui.Font.MeasureString("Start").X / 2,
-                               ScreenManager.instance.ScreenSize.Y / 2.5f), "Start");
+                               ScreenManager.instance.ScreenSize.Y / 2.5f - 50), "Start");
+            gui.CreateButton(new Vector2(ScreenManager.instance.ScreenSize.X / 2 - gui.Font.MeasureString("Start").X / 2,
+                               ScreenManager.instance.ScreenSize.Y / 2.5f), "Load");
             gui.CreateButton(new Vector2(ScreenManager.instance.ScreenSize.X / 2 - gui.Font.MeasureString("Exit").X / 2,
                                ScreenManager.instance.ScreenSize.Y / 2.5f + 50), "Exit");
 
-            gui.Buttons[0].OnClick += (object a, EventArgs b) =>
+            gui.Buttons[1].OnClick += (object a, EventArgs b) =>
             {
                 (a as Button).color = Color.DarkRed;
                 Task.WaitAll(Task.Factory.StartNew(() => form.ShowDialog()));
                 //form.ShowDialog();
             };
 
-            gui.Buttons[1].OnClick += (object a, EventArgs b) =>
+            gui.Buttons[2].OnClick += (object a, EventArgs b) =>
             {
                 Screen.ScreenManager.instance.game.Content.Unload();
                 Screen.ScreenManager.instance.game.Exit();
