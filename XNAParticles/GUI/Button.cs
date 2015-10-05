@@ -9,10 +9,11 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using LemonParticlesSystem.GUI.Interfaces;
 
-namespace LemonParticlesSystem.GUI
+namespace LemonParticlesSystem.GUI 
 {
-    public class Button
+    public class Button : IInteractiveGUIObject
     {
         public Color color;
         Rectangle rect;
@@ -26,6 +27,8 @@ namespace LemonParticlesSystem.GUI
 
         public event EventHandler OnClick;
         public event EventHandler OnMouseOver;
+        public event EventHandler OnHide;
+        public event EventHandler OnShow;
 
         public Button(Vector2 position, string text, GUI parentGui) 
         {
@@ -59,13 +62,25 @@ namespace LemonParticlesSystem.GUI
 
         void OnMouseOverHandler(object sender, EventArgs e)
         {
-            (sender as Button).color = Color.Red;
+            (sender as Button).color.G = (byte)MathHelper.SmoothStep((sender as Button).color.G, 90, 0.1f);
+            (sender as Button).color.B = (byte)MathHelper.SmoothStep((sender as Button).color.B, 90, 0.1f);
+            (sender as Button).color.R = (byte)MathHelper.SmoothStep((sender as Button).color.R, 90, 0.1f);
             if (ParentGUI.cursor.state.LeftButton == ButtonState.Pressed)
             {
 
                 if (OnClick != null)
                     OnClick(this, null);
             }
+        }
+
+        public void Hide()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Show()
+        {
+            throw new NotImplementedException();
         }
     }
 }

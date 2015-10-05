@@ -35,7 +35,7 @@ namespace LemonParticlesSystem
             {
                 pathToScene = listBox1.Items[listBox1.SelectedIndex].ToString();
 
-                Screen.ScreenManager.instance.AddScreen(new MainScreen(pathToScene));
+                Screen.ScreenManager.instance.AddScreen(new Screen.MainScreen(pathToScene));
                 Close();
             }
             else

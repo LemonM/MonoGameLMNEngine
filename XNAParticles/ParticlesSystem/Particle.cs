@@ -43,6 +43,9 @@ namespace LemonParticlesSystem.ParticlesSystem
         Vector2 _velocity;
 
         [NonSerialized]
+        private int index;
+
+        [NonSerialized]
         public Texture2D texture;
         /// <summary>
         /// Particle current speed
@@ -159,7 +162,7 @@ namespace LemonParticlesSystem.ParticlesSystem
         /// </summary>
         public event EventHandler OnBirth;
 
-        public Particle(Vector2 position, float angularVelocity, Texture2D textre, float scale, ParticleEmitter parentEmit, bool RandomColor = false)
+        public Particle(Vector2 position, float angularVelocity, Texture2D textre, float scale, ParticleEmitter parentEmit, int index, bool RandomColor = false)
         {
             parentEmitter = parentEmit;
             random = new Random();
@@ -168,6 +171,7 @@ namespace LemonParticlesSystem.ParticlesSystem
             PositionX = position.X;
             PositionY = position.Y;
             Velocity = parentEmitter.ParticlesVelocity;
+            this.index = index;
 
             if (parentEmitter.IsRandomDirection)
                 if (random.Next(0, 10) < 5)
@@ -215,10 +219,9 @@ namespace LemonParticlesSystem.ParticlesSystem
             {
                 if (OnDeath != null)
                     OnDeath(this, EvtArgs);
-                //System.Diagnostics.Debug.Print("Particle timer = " + Timer.ToString());
+
                 CurrentLifeTime = 0f;
             }
-
 
             if (PositionX > ScreenManager.instance.ScreenSize.X || PositionY > ScreenManager.instance.ScreenSize.Y ||
                 PositionX < 0 || PositionY < 0)
@@ -240,47 +243,28 @@ namespace LemonParticlesSystem.ParticlesSystem
                 }
             }
             Rotation += AngularVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-
-
         }
 
         public void Destroy(object Sender, EventArgs eArgs)
         {
-
-            // System.Diagnostics.Debug.Print(Sender.ToString() + " destroyed");
+            parentEmitter.ParticlesM[index] = null;
+            parentEmitter.CurrentParticlesCount--;
+            
+            /*
             Parallel.For(0, parentEmitter.ParticlesM.Length, (i, loopState) =>
                 {
                     if (parentEmitter.ParticlesM[i] != null)
                     {
                         if (parentEmitter.ParticlesM[i].Equals(Sender))
                         {
-                            //parentEmitter.ParticlesM[i].texture.Dispose();
                             parentEmitter.ParticlesM[i] = null;
 
-                            // Sender = null;
                             parentEmitter.CurrentParticlesCount--;
                             loopState.Stop();
                         }
                     }
                 });
-            /*
-            for (int i = 0; i < parentEmitter.ParticlesM.Length; i++)
-            {
-                if (parentEmitter.ParticlesM[i] != null)
-                {
-                    if (parentEmitter.ParticlesM[i].Equals(Sender))
-                    {
-                        //parentEmitter.ParticlesM[i].texture.Dispose();
-                        parentEmitter.ParticlesM[i] = null;
-
-                        // Sender = null;
-                        parentEmitter.CurrentParticlesCount--;
-                        break;
-                    }
-                }
-            }
-             */ 
+                */
         }
 
         public void Dispose()

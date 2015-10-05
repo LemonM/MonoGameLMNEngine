@@ -171,26 +171,30 @@ namespace LemonParticlesSystem.ParticlesSystem
 
         public void Emit()
         {
-                if (MaxParticlesCount > CurrentParticlesCount)
+            if (MaxParticlesCount > CurrentParticlesCount)
+            {
+                int index = 0;
+
+                for (int i = 0; i < ParticlesM.Length; i++)
                 {
-                    Particle particle = new Particle(new Vector2(random.Next((int)EmitterPosition.X, (int)EmitterPosition.X + (int)EmitterSize.X),
-                        random.Next((int)EmitterPosition.Y, (int)EmitterPosition.Y + (int)EmitterSize.Y)), 0f, ParticlesTexture, 0.1f, this, IsRandomColor);
-                   // particle.texture = ParticlesTexture;
-                    for (int i = 0; i < ParticlesM.Length; i++)
+                    if (ParticlesM[i] == null)
                     {
-                        if (ParticlesM[i] == null)
-                        {
-                            ParticlesM[i] = particle;
-                            break;
-                        }
+                        index = i;
+                        break;
                     }
                 }
+
+                Particle particle = new Particle(new Vector2(random.Next((int)EmitterPosition.X, (int)EmitterPosition.X + (int)EmitterSize.X),
+                    random.Next((int)EmitterPosition.Y, (int)EmitterPosition.Y + (int)EmitterSize.Y)), 0f, ParticlesTexture, 0.1f, this, index, IsRandomColor);
+
+                ParticlesM[index] = particle;
+            }
         }
 
         public void Dispose()
         {
             
-            Parallel.For(0, ParticlesM.Length, (i) =>
+            Parallel.For(0, ParticlesM.Length, (i, j) =>
                 {
                     if (ParticlesM[i] != null)
                     {

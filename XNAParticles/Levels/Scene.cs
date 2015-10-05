@@ -58,7 +58,7 @@ namespace LemonParticlesSystem
             {
                 emitter.Update(gameTime);
             }
-
+            
             sound.Update(gameTime);
         }
 

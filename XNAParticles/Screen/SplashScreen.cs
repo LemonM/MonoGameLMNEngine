@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace LemonParticlesSystem.Screen
 {
-    public class SplashScreen : GameScreen
+    public class SplashScreen : Screen
     {
         Texture2D background;
         [XmlElement("Path")]

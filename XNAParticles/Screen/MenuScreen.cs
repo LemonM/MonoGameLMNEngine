@@ -12,7 +12,7 @@ using LemonParticlesSystem.GUI;
 
 namespace LemonParticlesSystem.Screen
 {
-    class MenuScreen : GameScreen
+    class MenuScreen : Screen
     {
         GUI.GUI gui;
         Texture2D Background;
@@ -46,8 +46,8 @@ namespace LemonParticlesSystem.Screen
 
             gui.Buttons[1].OnClick += (object a, EventArgs b) =>
             {
-                Screen.ScreenManager.instance.game.Content.Unload();
-                Screen.ScreenManager.instance.game.Exit();
+                ScreenManager.instance.game.Content.Unload();
+                ScreenManager.instance.game.Exit();
             };
         }
 
@@ -64,18 +64,17 @@ namespace LemonParticlesSystem.Screen
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            
-                    spriteBatch.Begin();
+            spriteBatch.Begin();
 
-                    spriteBatch.DrawString(gui.Font, "Particle system by Shadrin Dmitriy. Alpha version 3. 2015.", new Vector2(ScreenManager.instance.ScreenSize.X - 700,
-                                                                                            ScreenManager.instance.ScreenSize.Y - 50), Color.White);
-                    spriteBatch.End();
+            spriteBatch.DrawString(gui.Font, "Particle system by Shadrin Dmitriy. Alpha version 4. Tree fix. 2015.", new Vector2(ScreenManager.instance.ScreenSize.X - 700,
+                                                                                    ScreenManager.instance.ScreenSize.Y - 50), Color.White);
+            spriteBatch.End();
 
-                    spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.Additive);
-                    gui.Draw(spriteBatch);
-                    spriteBatch.Draw(Background, new Rectangle(0, 0, (int)Screen.ScreenManager.instance.ScreenSize.X, (int)Screen.ScreenManager.instance.ScreenSize.Y), null, Color.White, 0f, Vector2.Zero, SpriteEffects.None, 1f);
-                    spriteBatch.End();
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.Additive);
+            spriteBatch.Draw(Background, new Rectangle(0, 0, (int)ScreenManager.instance.ScreenSize.X, (int)ScreenManager.instance.ScreenSize.Y), null, Color.White, 0f, Vector2.Zero, SpriteEffects.None, 1f);
+            spriteBatch.End();
 
+            gui.Draw(spriteBatch);
         }
     }
 }

@@ -8,11 +8,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Content;
+using LemonParticlesSystem.GUI.Interfaces;
 
 namespace LemonParticlesSystem.GUI
 {
     [Serializable]
-    public class Cursor
+    public class Cursor : IDrawableGUIObject
     {
         Rectangle rect;
         [XmlIgnore]
@@ -23,6 +24,9 @@ namespace LemonParticlesSystem.GUI
         public Vector2 CurrentPos { get; private set; }
         [XmlIgnore]
         public MouseState state;
+
+        public event EventHandler OnHide;
+        public event EventHandler OnShow;
 
         public string PathToTexture { get; set; }
 
@@ -49,6 +53,16 @@ namespace LemonParticlesSystem.GUI
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(Texture, new Rectangle((int)CurrentPos.X, (int)CurrentPos.Y, 16, 16), Color.White); 
+        }
+
+        public void Hide()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Show()
+        {
+            throw new NotImplementedException();
         }
     }
 }

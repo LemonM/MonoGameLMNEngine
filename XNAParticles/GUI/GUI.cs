@@ -58,6 +58,8 @@ namespace LemonParticlesSystem.GUI
 
         public void Draw(SpriteBatch spriteBatch)
         {
+            spriteBatch.Begin();
+
             foreach (Text label in Labels)
             {
                 label.Draw(spriteBatch);
@@ -69,6 +71,8 @@ namespace LemonParticlesSystem.GUI
             }
 
             cursor.Draw(spriteBatch);
+
+            spriteBatch.End();
         }
 
         public void CreateButton(Vector2 position, string text)

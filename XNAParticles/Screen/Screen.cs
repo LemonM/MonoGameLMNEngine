@@ -7,17 +7,18 @@ using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using LPS = LemonParticlesSystem.Interfaces;
 
 namespace LemonParticlesSystem.Screen
 {
-    public class GameScreen
+    public abstract class Screen : LPS.IDrawable, LPS.IUpdatable
     {
         protected ContentManager Content;
 
         [XmlIgnore]
         public Type type;
 
-        public GameScreen()
+        public Screen()
         {
             type = this.GetType();
         }
@@ -30,7 +31,7 @@ namespace LemonParticlesSystem.Screen
         {
             Content.Unload();
         }
-        public virtual void Update(GameTime gameTime) { }
-        public virtual void Draw(SpriteBatch spriteBatch) { }
+        public abstract void Update(GameTime gameTime);
+        public abstract void Draw(SpriteBatch spriteBatch);
     }
 }

@@ -12,20 +12,22 @@ namespace LemonParticlesSystem.Screen
 {
     public class ScreenManager
     {
+       // List<IPSObject> objects;
+
         ContentManager Content;
 
         Game _game;
 
         protected static ScreenManager Instance;
 
-        GameScreen CurrentScreen;
-        GameScreen NewScreen;
+        Screen CurrentScreen;
+        Screen NewScreen;
 
         Vector2 screenSize;
 
-        XmlManager<GameScreen> xmlGameScreenManager;
+        XmlManager<Screen> xmlGameScreenManager;
 
-        Stack<GameScreen> ScreenStack = new Stack<GameScreen>();
+        Stack<Screen> ScreenStack = new Stack<Screen>();
 
         public event EventHandler<ScreenChangeEventArgs> OnScreenChangeStart;
         public event EventHandler OnScreenChangeEnd;
@@ -63,7 +65,7 @@ namespace LemonParticlesSystem.Screen
             CurrentScreen = new MenuScreen();
         }
          
-        public void AddScreen(GameScreen screen)
+        public void AddScreen(Screen screen)
         {
             if (OnScreenChangeStart != null)
                 OnScreenChangeStart(this, new ScreenChangeEventArgs(CurrentScreen, screen));

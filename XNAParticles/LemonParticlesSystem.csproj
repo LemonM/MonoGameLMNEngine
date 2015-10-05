@@ -80,7 +80,12 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GUI\Interfaces\IDrawableGUIObject.cs" />
+    <Compile Include="GUI\Interfaces\IGUIObject.cs" />
+    <Compile Include="GUI\Interfaces\IInteractiveGUIObject.cs" />
     <Compile Include="InputController\Input.cs" />
+    <Compile Include="Interfaces\IDrawable.cs" />
+    <Compile Include="Interfaces\IUpdatable.cs" />
     <Compile Include="LoadSceneForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,10 +102,10 @@
     <Compile Include="Screen\MenuScreen.cs" />
     <Compile Include="GUI\GUI.cs" />
     <Compile Include="GUI\Text.cs" />
-    <Compile Include="Scene.cs" />
-    <Compile Include="SceneMAnager.cs" />
+    <Compile Include="Levels\Scene.cs" />
+    <Compile Include="Levels\SceneMAnager.cs" />
     <Compile Include="Game1.cs" />
-    <Compile Include="Screen\GameScreen.cs" />
+    <Compile Include="Screen\Screen.cs" />
     <Compile Include="Screen\MainScreen.cs" />
     <Compile Include="ParticlesSystem\Particle.cs" />
     <Compile Include="ParticlesSystem\ParticleEmitter.cs" />
@@ -221,6 +226,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Icon.ico" />
+    <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Fonts\Font.xnb">
@@ -262,9 +268,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GUI\MainScreen\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="LoadSceneForm.resx">
       <DependentUpon>LoadSceneForm.cs</DependentUpon>

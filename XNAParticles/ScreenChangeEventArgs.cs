@@ -7,10 +7,10 @@ namespace LemonParticlesSystem.Screen
 {
     public class ScreenChangeEventArgs : EventArgs
     {
-        public GameScreen currentScreen { get; private set; }
-        public GameScreen newScreen { get; private set; }
+        public Screen currentScreen { get; private set; }
+        public Screen newScreen { get; private set; }
 
-        public ScreenChangeEventArgs(GameScreen currentScr, GameScreen newScr)
+        public ScreenChangeEventArgs(Screen currentScr, Screen newScr)
         {
             currentScreen = currentScr;
             newScreen = newScr;

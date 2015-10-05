@@ -14,10 +14,11 @@ using LemonParticlesSystem.ParticlesSystem;
 
 namespace LemonParticlesSystem.Screen
 {
-    class MainScreen : GameScreen
+    class MainScreen : Screen
     {
         SceneManager sceneManager;
-        SpriteFont font;
+
+        GUI.GUI inGameGUI;
 
         string Path;
 
@@ -26,9 +27,9 @@ namespace LemonParticlesSystem.Screen
             get { return sceneManager; }
         }
 
-        public MainScreen(string path)
+        public MainScreen(string path) : base()
         {
-            
+            inGameGUI = new GUI.GUI(@"Fonts\Menu");            
             sceneManager = new SceneManager();
             Path = path;
         }
@@ -38,7 +39,8 @@ namespace LemonParticlesSystem.Screen
             base.LoadContent(content);
             sceneManager.LoadScene(Path);
             sceneManager.LoadContent(content);
-            font = Content.Load<SpriteFont>(@"Fonts\Font");
+            inGameGUI.LoadContent(content);
+            inGameGUI.Buttons.Add(new GUI.Button(new Vector2(1000, 100), "ChangeTexture", inGameGUI));
         }
 
         public override void UnloadContent()
@@ -53,14 +55,16 @@ namespace LemonParticlesSystem.Screen
 
             if (Input.Instance.IsKeyPressed(Keys.Escape))
             {
-                Screen.ScreenManager.instance.AddScreen(new MenuScreen());   
+                ScreenManager.instance.AddScreen(new MenuScreen());   
             }
             sceneManager.Update(gameTime);
+            inGameGUI.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             sceneManager.Draw(spriteBatch);
+            inGameGUI.Draw(spriteBatch);
         }
     }
 }

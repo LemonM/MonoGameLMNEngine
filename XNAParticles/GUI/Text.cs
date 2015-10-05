@@ -9,13 +9,22 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
+using LemonParticlesSystem.GUI.Interfaces;
+
 namespace LemonParticlesSystem.GUI
 {
-    public class Text
+    public class Text : IInteractiveGUIObject
     {
-        Vector2 size;
+        bool isVisible;
 
+        Vector2 size;
         Color color;
+        Rectangle rect;
+
+        public event EventHandler OnShow;
+        public event EventHandler OnHide;
+        public event EventHandler OnClick;
+        public event EventHandler OnMouseOver;
 
         [XmlIgnore]
         public GUI ParentGUI { get; set; }
@@ -33,16 +42,38 @@ namespace LemonParticlesSystem.GUI
                 }
         }
 
-        public Text() { }
+        public Text()
+        {
+            rect = new Rectangle(Position.ToPoint(), ParentGUI.Font.MeasureString(TextString).ToPoint());
+        }
+
+        public void Hide()
+        {
+            isVisible = false;
+            if (OnHide != null)
+                OnHide(this, null);
+        }
+
+        public void Show()
+        {
+            isVisible = true;
+            if (OnShow != null)
+                OnShow(this, null);
+        }
 
         public void LoadContent(ContentManager content)
+        {
+        }
+
+        public void Update(GameTime gameTime)
         {
 
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(ParentGUI.Font, TextString, Position, Color.White);
+            if (isVisible)
+                spriteBatch.DrawString(ParentGUI.Font, TextString, Position, Color.White);
         }
     }
 }
