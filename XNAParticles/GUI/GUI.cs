@@ -70,14 +70,23 @@ namespace LemonParticlesSystem.GUI
                 button.Draw(spriteBatch);
             }
 
-            cursor.Draw(spriteBatch);
-
             spriteBatch.End();
+
+            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.Additive, SamplerState.LinearWrap, DepthStencilState.Default, RasterizerState.CullNone, null, null);
+            cursor.Draw(spriteBatch);
+            spriteBatch.End();
+
+            
         }
 
         public void CreateButton(Vector2 position, string text)
         {
             Buttons.Add(new Button(position, text, this));
+        }
+
+        public void CreateText()
+        {
+
         }
     }
 }

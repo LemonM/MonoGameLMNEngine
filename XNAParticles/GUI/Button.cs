@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
+using LemonParticlesSystem.InputController;
+
 using LemonParticlesSystem.GUI.Interfaces;
 
 namespace LemonParticlesSystem.GUI 
@@ -18,7 +20,6 @@ namespace LemonParticlesSystem.GUI
         public Color color;
         Rectangle rect;
         SpriteFont font;
-
         
         GUI ParentGUI { get; set; }
 
@@ -65,7 +66,7 @@ namespace LemonParticlesSystem.GUI
             (sender as Button).color.G = (byte)MathHelper.SmoothStep((sender as Button).color.G, 90, 0.1f);
             (sender as Button).color.B = (byte)MathHelper.SmoothStep((sender as Button).color.B, 90, 0.1f);
             (sender as Button).color.R = (byte)MathHelper.SmoothStep((sender as Button).color.R, 90, 0.1f);
-            if (ParentGUI.cursor.state.LeftButton == ButtonState.Pressed)
+            if (Input.Instance.IsLMBPressed())
             {
 
                 if (OnClick != null)

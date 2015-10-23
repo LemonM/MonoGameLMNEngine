@@ -175,6 +175,8 @@ namespace LemonParticlesSystem.ParticlesSystem
             {
                 int index = 0;
 
+                Sound.SoundSys ss = new Sound.SoundSys();
+
                 for (int i = 0; i < ParticlesM.Length; i++)
                 {
                     if (ParticlesM[i] == null)

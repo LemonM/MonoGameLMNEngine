@@ -66,7 +66,7 @@ namespace LemonParticlesSystem.Screen
         {
             spriteBatch.Begin();
 
-            spriteBatch.DrawString(gui.Font, "Particle system by Shadrin Dmitriy. Alpha version 4. Tree fix. 2015.", new Vector2(ScreenManager.instance.ScreenSize.X - 700,
+            spriteBatch.DrawString(gui.Font, "Particle system by Shadrin Dmitriy. Alpha version 4. Tree fix. 2015.", new Vector2(ScreenManager.instance.ScreenSize.X - 750,
                                                                                     ScreenManager.instance.ScreenSize.Y - 50), Color.White);
             spriteBatch.End();
 

@@ -38,24 +38,25 @@
       </Size>
       <Position>
         <X>700</X>
-        <Y>500</Y>
+        <Y>600</Y>
       </Position>
       <MaxParticlesCount>1000</MaxParticlesCount>
       <RandomColor>false</RandomColor>
-      <PerEmit>1</PerEmit>
+      <RandomDirection>true</RandomDirection>
+      <PerEmit>5</PerEmit>
       <ParticlesColor>
         <A>255</A>
-        <B>0</B>
-        <G>0</G>
-        <R>0</R>
+        <B>10</B>
+        <G>255</G>
+        <R>255</R>
       </ParticlesColor>
       <Enabled>true</Enabled>
       <ParticlesVelocity>
         <X>0</X>
-        <Y>-200</Y>
+        <Y>-500</Y>
       </ParticlesVelocity>
       <ParticleAngularVelocity>0</ParticleAngularVelocity>
-      <ParticleLifeTime>5000</ParticleLifeTime>
+      <ParticleLifeTime>1000</ParticleLifeTime>      
     </ParticleEmitter>
   </Emitters>
   <BackgroundPath>Texture/Menu/BG</BackgroundPath>

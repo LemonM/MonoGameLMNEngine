@@ -21,9 +21,17 @@ namespace LemonParticlesSystem.GUI
         [XmlIgnore]
         Texture2D Texture;
         [XmlIgnore]
-        public Vector2 CurrentPos { get; private set; }
-        [XmlIgnore]
-        public MouseState state;
+        public Vector2 CurrentPos
+        {
+            get
+            {
+                return InputController.Input.Instance.GetMousePosition().ToVector2();
+            }
+            private set
+            {
+                throw new Exception("You cant change curosr position");
+            }
+        }
 
         public event EventHandler OnHide;
         public event EventHandler OnShow;
@@ -37,15 +45,12 @@ namespace LemonParticlesSystem.GUI
 
         public void LoadContent(ContentManager content)
         {
-            state = new MouseState(0, 0, 0, ButtonState.Pressed, ButtonState.Released, ButtonState.Released, ButtonState.Released, ButtonState.Released);
             Texture = content.Load<Texture2D>(PathToTexture);
             rect = new Rectangle(0, 0, 16, 16);
         }
 
         public void Update(GameTime gameTime)
         {
-            state = Mouse.GetState();
-            CurrentPos = new Vector2(state.X, state.Y);
             rect.X = (int)CurrentPos.X;
             rect.Y = (int)CurrentPos.Y;
         }
