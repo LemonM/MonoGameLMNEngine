@@ -20,8 +20,11 @@ namespace LemonParticlesSystem.GUI
         public Color color;
         Rectangle rect;
         SpriteFont font;
-        
+              
         GUI ParentGUI { get; set; }
+
+        bool clickPrevState;
+        bool visible;
 
         public string ButtonString { get; set; }
         public Vector2 Position { get; set; }
@@ -39,6 +42,8 @@ namespace LemonParticlesSystem.GUI
             rect = new Rectangle((int)Position.X, (int)Position.Y, (int)parentGui.Font.MeasureString(ButtonString).X, (int)parentGui.Font.MeasureString(ButtonString).Y);
             color = Color.White;
             OnMouseOver += OnMouseOverHandler;
+            clickPrevState = false;
+            visible = true;
         }
 
         public void LoadContent(ContentManager content)
@@ -58,30 +63,31 @@ namespace LemonParticlesSystem.GUI
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.DrawString(ParentGUI.Font, ButtonString, Position, color);
+            if (visible)
+                spriteBatch.DrawString(ParentGUI.Font, ButtonString, Position, color);
         }
 
         void OnMouseOverHandler(object sender, EventArgs e)
         {
-            (sender as Button).color.G = (byte)MathHelper.SmoothStep((sender as Button).color.G, 90, 0.1f);
-            (sender as Button).color.B = (byte)MathHelper.SmoothStep((sender as Button).color.B, 90, 0.1f);
-            (sender as Button).color.R = (byte)MathHelper.SmoothStep((sender as Button).color.R, 90, 0.1f);
-            if (Input.Instance.IsLMBPressed())
+
+            color = Color.Lerp(color, Color.Gray, 0.1f);
+            if (clickPrevState && !Input.Instance.IsLMBPressed())
             {
 
                 if (OnClick != null)
                     OnClick(this, null);
             }
+            clickPrevState = Input.Instance.IsLMBPressed();
         }
 
         public void Hide()
         {
-            throw new NotImplementedException();
+            visible = false;
         }
 
         public void Show()
         {
-            throw new NotImplementedException();
+            visible = true;
         }
     }
 }

@@ -15,9 +15,7 @@ namespace LemonParticlesSystem.Screen
     class MenuScreen : Screen
     {
         GUI.GUI gui;
-        Texture2D Background;
-
-        LoadSceneForm form = new LoadSceneForm();
+        Texture2D Background;       
 
          public MenuScreen()
          {
@@ -39,9 +37,11 @@ namespace LemonParticlesSystem.Screen
 
             gui.Buttons[0].OnClick += (object a, EventArgs b) =>
             {
+                LoadSceneForm form = new LoadSceneForm();
                 (a as Button).color = Color.DarkRed;
-                Task.WaitAll(Task.Factory.StartNew(() => form.ShowDialog()));
-                //form.ShowDialog();
+                //Task.Factory.StartNew(() => form.Show());
+                //gui.Buttons[0].Hide();
+                form.ShowDialog();
             };
 
             gui.Buttons[1].OnClick += (object a, EventArgs b) =>
@@ -54,7 +54,6 @@ namespace LemonParticlesSystem.Screen
         public override void UnloadContent()
         {
             base.UnloadContent();
-            form.Dispose();
         }
 
         public override void Update(GameTime gameTime)

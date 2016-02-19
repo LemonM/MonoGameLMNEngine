@@ -17,23 +17,32 @@ namespace LemonParticlesSystem
 
         public string pathToScene { get; set; }
 
+        System.Collections.Generic.Dictionary<string, string> scenesDictionary;
+
         public LoadSceneForm()
         {
             InitializeComponent();
+            scenesDictionary = new Dictionary<string, string>();
         }
 
         private void formTest_Load(object sender, EventArgs e)
         {
+            //listBox1.Items.Clear();
             foreach (var item in Directory.GetFiles(Screen.ScreenManager.instance.game.Content.RootDirectory + @"\Xml\Scenes"))
-                listBox1.Items.Add(item);
+            {
+                string name = Path.GetFileName("C:\\" + item);
+                string path = item;
+                scenesDictionary.Add(name, path);
+                this.BeginInvoke((Action)(() => listBox1.Items.Add(name)));
 
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             if (listBox1.SelectedIndex != -1)
             {
-                pathToScene = listBox1.Items[listBox1.SelectedIndex].ToString();
+                pathToScene = scenesDictionary[listBox1.Items[listBox1.SelectedIndex].ToString()];
 
                 Screen.ScreenManager.instance.AddScreen(new Screen.MainScreen(pathToScene));
                 Close();
@@ -41,6 +50,21 @@ namespace LemonParticlesSystem
             else
                 System.Windows.Forms.MessageBox.Show("Choose scene to load!");
             
+        }
+
+        private void LoadSceneForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            listBox1.Items.Clear();
+        }
+
+        private void LoadSceneForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            listBox1.Items.Clear();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
